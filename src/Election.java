@@ -5,6 +5,8 @@ import java.util.Random;
  * on 05.06.17 11:08.
  */
 public class Election {
+    //Who will be first? 0 - user, 1 - program
     Random random = new Random();
-    int getFirst(int i){    return random.nextInt(i);   }
+    boolean user = random.nextBoolean();
+    boolean program = !user;
 }

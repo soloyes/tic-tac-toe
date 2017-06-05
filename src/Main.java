@@ -1,21 +1,15 @@
-import java.util.ArrayList;
-import java.util.jar.Attributes;
+import java.io.IOException;
 
 /**
  * Created by sol
  * on 05.06.17 11:05.
  */
 public class Main {
-    static int N = 9;
-    //Who will be first? 0 - user, 1 - program
-    static Election election = new Election();
-    static int elected = election.getFirst(2);
-    //
-
-    public static void main(String[] args){
-        GameField gameField = new GameField(N);
-        gameField.draw(gameField.data, 3);
-
-
+    public static void main(String[] args) throws IOException{
+        Game game = new Game(true);
+        for (; game.game;){
+            Movement3x3 movement3x3 = new Movement3x3();
+            movement3x3.setMovement(game);
+        }
     }
 }
