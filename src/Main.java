@@ -6,10 +6,10 @@ import java.io.IOException;
  */
 public class Main {
     public static void main(String[] args){
-        Game game = new Game(true);
-        for (; Game.game ;){
-            Movement3x3 movement3x3 = new Movement3x3();
-            movement3x3.setMovement(game);
+        Movement3x3 movement3x3 = new Movement3x3();
+        movement3x3.firstMovement();
+        for (; true ;){
+            movement3x3.nextMovement();
         }
     }
 }

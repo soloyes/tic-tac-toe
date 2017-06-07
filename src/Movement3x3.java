@@ -3,22 +3,46 @@
  * on 05.06.17 12:38.
  */
 public class Movement3x3 {
-    void setMovement(Game game) {
-        Input input = new Input();
-        if (GameField.currentMovement == 0) {
+    private Input input = new Input();
+    private ProgramAI programai = new ProgramAI();
+    void firstMovement() {
+        if (GameField.currentMovement == -1) {
             if (Game.election.program) {
-                GameField.data.set(4, 'X');
+                GameField.data.set(4, Game.election.program ? 'X' : 'O');
+                GameField.nextUser();
                 System.out.println("I am first..");
-                Game.gameField.draw(GameField.data, Game.N);
             } else {
-                System.out.print(input.translate(input.checkCoordinate()));
-                GameField.data.set(input.translate(input.checkCoordinate()), 'X');
-                Game.gameField.draw(GameField.data, Game.N);
+                GameField.data.set(input.translate(input.checkCoordinate()), Game.election.user ? 'X' : 'O');
+                GameField.nextProgram();
             }
-        } else{
-                System.out.println("Stop Game!");
-                Game.game = false;
-            }
-            GameField.currentMovement++;
         }
     }
+
+    void nextMovement (){
+        Integer in;
+        if (GameField.currentMovement == 1){
+            for (; ;){
+                GameField.drawField(GameField.data, Game.N);
+                in = input.translate(input.checkCoordinate());
+                if (!input.checkExist(in)) {
+                    GameField.data.set(in, GameField.currentMovement == 1 ? 'X' : 'O');
+                    GameField.currentMovement = 0;
+                    break;
+                }
+                System.out.println("Exist's value!");
+            }
+        }
+        else {
+            for (; ;){
+                in = programai.randomBack();
+                if (!input.checkExist(in)) {
+                    GameField.data.set(in, GameField.currentMovement == 0 ? 'O' : 'X');
+                    GameField.currentMovement = 1;
+                    System.out.println(GameField.fullField);
+                    break;
+                }
+            }
+        }
+    }
+}
+

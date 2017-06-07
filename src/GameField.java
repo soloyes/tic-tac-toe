@@ -6,16 +6,19 @@ import java.util.Iterator;
  * on 05.06.17 11:45.
  */
 public class GameField {
-    private static char fieldCharacter = '_';
+    static char fieldCharacter = '_';
     static ArrayList<Character> data = new ArrayList<>();
-    static int currentMovement;
+    //-1 - this is the first step
+    // 0 - this is program step
+    // 1 - this is user step
+    static int currentMovement = -1;
+    static int fullField = 0;
 
     GameField(int N, int M){
-        currentMovement = 0;
         for (int i = 0; i < N*M; i ++){   data.add(fieldCharacter);   }
     }
 
-    void draw(ArrayList<Character> list, int N) {
+    static void drawField(ArrayList<Character> list, int N) {
         Iterator iterator = list.iterator();
         int j = 0;
         //Here we draw array as a lines, depends from field length
@@ -27,4 +30,12 @@ public class GameField {
                 j += N;
             }
         }
+
+    static void nextProgram(){
+        currentMovement = 0;
+    }
+
+    static void nextUser(){
+        currentMovement = 1;
+    }
 }
