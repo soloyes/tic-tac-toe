@@ -1,34 +1,24 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 /**
  * Created by sol
  * on 05.06.17 12:38.
  */
 public class Movement3x3 {
-    void setMovement(Game game){
-            if (game.gameField.currentMovement == 0) {
-                if (game.election.program){
-                    game.gameField.data.set(4, 'X');
-                    System.out.println("I am first..");
-                    game.gameField.draw(game.gameField.data, game.N);
-                }
-                else {
-                    System.out.println("What is your's..?");
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-                    try {
-                        reader.readLine();
-                    }
-                    catch (Exception e){
-                        e.printStackTrace();
-                    }
-                }
-                game.gameField.currentMovement ++;
+    void setMovement(Game game) {
+        Input input = new Input();
+        if (GameField.currentMovement == 0) {
+            if (Game.election.program) {
+                GameField.data.set(4, 'X');
+                System.out.println("I am first..");
+                Game.gameField.draw(GameField.data, Game.N);
+            } else {
+                System.out.print(input.translate(input.checkCoordinate()));
+                GameField.data.set(input.translate(input.checkCoordinate()), 'X');
+                Game.gameField.draw(GameField.data, Game.N);
             }
-            else {
+        } else{
                 System.out.println("Stop Game!");
-                game.game = false;
+                Game.game = false;
             }
+            GameField.currentMovement++;
+        }
     }
-}
-

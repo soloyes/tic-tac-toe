@@ -5,9 +5,9 @@ import java.io.IOException;
  * on 05.06.17 11:05.
  */
 public class Main {
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args){
         Game game = new Game(true);
-        for (; game.game;){
+        for (; Game.game ;){
             Movement3x3 movement3x3 = new Movement3x3();
             movement3x3.setMovement(game);
         }
