@@ -4,15 +4,14 @@
  */
 public class Movement3x3 {
     private Input input = new Input();
-    private ProgramAI programai = new ProgramAI();
     void firstMovement() {
         if (GameField.currentMovement == -1) {
-            if (Game.election.program) {
-                GameField.data.set(4, Game.election.program ? 'X' : 'O');
+            if (Election.program) {
+                GameField.data.set(4, Election.programChip);
                 GameField.nextUser();
                 System.out.println("I am first..");
             } else {
-                GameField.data.set(input.translate(input.checkCoordinate()), Game.election.user ? 'X' : 'O');
+                GameField.data.set(input.translate(ProgramAI.map, input.checkCoordinate()), Election.userChip);
                 GameField.nextProgram();
             }
         }
@@ -22,10 +21,10 @@ public class Movement3x3 {
         Integer in;
         if (GameField.currentMovement == 1){
             for (; ;){
-                GameField.drawField(GameField.data, Game.N);
-                in = input.translate(input.checkCoordinate());
+                GameField.drawField(GameField.data);
+                in = input.translate(ProgramAI.map, input.checkCoordinate());
                 if (!input.checkExist(in)) {
-                    GameField.data.set(in, GameField.currentMovement == 1 ? 'X' : 'O');
+                    GameField.data.set(in, Election.userChip);
                     GameField.currentMovement = 0;
                     break;
                 }
@@ -34,11 +33,10 @@ public class Movement3x3 {
         }
         else {
             for (; ;){
-                in = programai.randomBack();
+                in = Game.programai.randomBack();
                 if (!input.checkExist(in)) {
-                    GameField.data.set(in, GameField.currentMovement == 0 ? 'O' : 'X');
+                    GameField.data.set(in, Election.programChip);
                     GameField.currentMovement = 1;
-                    System.out.println(GameField.fullField);
                     break;
                 }
             }

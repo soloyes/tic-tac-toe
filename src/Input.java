@@ -1,6 +1,5 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -31,11 +30,7 @@ public class Input {
         return GameField.data.get(in) != GameField.fieldCharacter;
     }
 
-    Integer translate(Integer in){
-        Map<Integer, Integer> map = new HashMap<>();
-        map.put(11, 0);     map.put(12, 1);     map.put(13, 2);
-        map.put(21, 3);     map.put(22, 4);     map.put(23, 5);
-        map.put(31, 6);     map.put(32, 7);     map.put(33, 8);
+    Integer translate(Map<Integer,Integer> map, Integer in){
         return map.get(in);
     }
 }

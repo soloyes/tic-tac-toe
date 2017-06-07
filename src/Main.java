@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args){
         Movement3x3 movement3x3 = new Movement3x3();
         movement3x3.firstMovement();
-        for (; true ;){
+        for (; Game.game ;){
             movement3x3.nextMovement();
         }
     }
