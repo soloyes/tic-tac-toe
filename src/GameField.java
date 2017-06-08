@@ -1,38 +1,42 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by sol
  * on 05.06.17 11:45.
  */
+
 public class GameField {
-    static ArrayList<Character> data;
-    static char fieldCharacter = '_';
-    //-1 - this is the first step
-    // 0 - this is program step
-    // 1 - this is user step
-    static int currentMovement = -1;
+    static List<Character> data;
+    static int N = 3;
+    private static int M = N;
+    static Character fieldCharacter = '_';
+    //null - this is the first step
+    //false - this is program step
+    //true - this is user step
+    static Boolean currentMovement = null;
 
     static {
-        data = new ArrayList<>();
-        for (int i = 0; i < Game.N*Game.M; i ++){   data.add(fieldCharacter);   }
+        data = new LinkedList<>();
+        for (int i = 0; i < N*M; i ++){   data.add(fieldCharacter);   }
     }
 
-    static void drawField(ArrayList<Character> list) {
-        for (int j = 0; j < GameField.data.size(); j+= Game.N ) {
-            for (int i = j; i < Game.N + j; i++) {
-                System.out.print(GameField.data.get(i) + " ");
+    static void drawField() {
+        if (currentMovement) System.out.println("User:");
+        else System.out.println("Program:");
+        for (int j = 0; j < data.size(); j+= N ) {
+            for (int i = j; i < N + j; i++) {
+                System.out.print(data.get(i) + " ");
             }
             System.out.println();
         }
     }
 
-    static void nextProgram(){
-        currentMovement = 0;
+    static void nextGamer(){
+        currentMovement = !currentMovement;
     }
 
-    static void nextUser(){
-        currentMovement = 1;
+    static Integer getRealValue(int i, int j){
+        return GameField.N*i + j;
     }
-
 }

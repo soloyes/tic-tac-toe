@@ -9,13 +9,12 @@ public class Election {
     private static Random random = new Random();
     static boolean program = random.nextBoolean();
     //Default chips
-    static char userChip = 'X';
-    static char programChip = 'O';
-
-    static void setChip(){
+    static char userChip;
+    static char programChip;
+    static {
+        userChip = 'X'; programChip = 'O';
         if (program){
-            userChip = 'O';
-            programChip = 'X';
+            userChip = 'O'; programChip = 'X';
         }
     }
 }
