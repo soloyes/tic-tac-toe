@@ -27,7 +27,7 @@ public class Movement3x3 {
                 }
             } else {
                 for (; ;) {
-                    in = Game.programai.randomBack();
+                    in = ProgramAI.randomBack(GameField.N*GameField.M);
                     if (!Input.checkExist(in)) {
                         GameField.data.set(in, Election.programChip);
                         break;

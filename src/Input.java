@@ -11,7 +11,10 @@ public class Input {
         Integer in;
         for (; ;) {
             try{
-                System.out.println("Example: 11, 12, 13, 21, 22, 23, 31, 32, 33");
+                System.out.println("Example: raw and column (" +
+                        (ProgramAI.randomBack(GameField.N) + 1) +
+                        (ProgramAI.randomBack(GameField.N) + 1) +
+                        ")");
                 System.out.println("What is your's..?");
                 in = Integer.parseInt(reader.readLine());
                 if (in/10 > 0 &&
