@@ -2,7 +2,7 @@
  * Created by sol
  * on 05.06.17 12:38.
  */
-public class Movement3x3 {
+public class Movement {
 
     void nextMovement () {
         if (GameField.currentMovement == null) {
@@ -27,7 +27,7 @@ public class Movement3x3 {
                 }
             } else {
                 for (; ;) {
-                    in = ProgramAI.randomBack(GameField.N*GameField.M);
+                    in = ProgramAI.randomBack().nextInt(GameField.N*GameField.M);
                     if (!Input.checkExist(in)) {
                         GameField.data.set(in, Election.programChip);
                         break;

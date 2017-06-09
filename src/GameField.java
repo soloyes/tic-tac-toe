@@ -8,7 +8,7 @@ import java.util.List;
 
 public class GameField {
     static List<Character> data;
-    static int N = ProgramAI.randomBack(2)+3;
+    static int N = ProgramAI.randomBack().nextInt(2)+3;
     static int M = N;
     static Character fieldCharacter = '_';
     //null - this is the first step

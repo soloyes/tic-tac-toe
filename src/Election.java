@@ -6,8 +6,7 @@ import java.util.Random;
  */
 public class Election {
     //Who will be first? 0 - program, 1 - user
-    private static Random random = new Random();
-    static boolean program = random.nextBoolean();
+    static boolean program = ProgramAI.randomBack().nextBoolean();
     //Default chips
     static char userChip;
     static char programChip;

@@ -4,10 +4,17 @@
  */
 public class Main {
     public static void main(String[] args){
-        Movement3x3 movement3x3 = new Movement3x3();
+        Movement movement = new Movement();
+        System.out.println("Game field size is " + GameField.N);
         for (; Game.game ;){
-            movement3x3.nextMovement();
+            movement.nextMovement();
             GameField.drawField();
         }
+
+        if (Game.result == null)System.out.println("Nobody win's");
+        else if (Game.result) System.out.println("User win's");
+        else if (!Game.result) System.out.println("Program win's");
+
+        System.out.println("End game!");
     }
 }
