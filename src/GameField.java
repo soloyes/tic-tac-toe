@@ -37,6 +37,6 @@ public class GameField {
     }
 
     static Integer getRealValue(int i, int j){
-        return GameField.N*i + j;
+        return N*i + j;
     }
 }

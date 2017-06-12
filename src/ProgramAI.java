@@ -22,34 +22,29 @@ public class ProgramAI {
 
         //Here i check the sum of values of all positions.
         //Check raw and column
-        int intUserChip = (int) Election.userChip;
-        int intProgramChip = (int) Election.programChip;
+        char currentChip = GameField.currentMovement ? Election.programChip : Election.userChip;
 
         for (int i = 0; i < GameField.N; i ++){
-            int rawStatus = 0;
-            int columnStatus = 0;
+            boolean rawStatus = true;
+            boolean columnStatus = true;
             for (int j = 0; j < GameField.N; j ++){
-                rawStatus += GameField.data.get(GameField.getRealValue(i, j));
-                columnStatus += GameField.data.get(GameField.getRealValue(j, i));
+                if (!GameField.data.get(GameField.getRealValue(i, j)).equals(currentChip)) rawStatus = false;
+                if (!GameField.data.get(GameField.getRealValue(j, i)).equals(currentChip)) columnStatus = false ;
             }
-            rawStatus = rawStatus % (GameField.currentMovement ? intProgramChip : intUserChip);
-            columnStatus = columnStatus % (GameField.currentMovement ? intProgramChip : intUserChip);
-            if (rawStatus == 0 || columnStatus == 0){
+            if (rawStatus || columnStatus){
                 Game.game = false;
                 Game.result = !GameField.currentMovement;
             }
         }
 
         //Check Diagonale
-        int diag1 = 0;
-        int diag2 = 0;
+        boolean diag1 = true;
+        boolean diag2 = true;
         for (int i = 0; i < GameField.N; i++) {
-            diag1 += GameField.data.get(GameField.getRealValue(i, i));
-            diag2 += GameField.data.get(GameField.getRealValue(i,GameField.N - i - 1));
+            if (!GameField.data.get(GameField.getRealValue(i, i)).equals(currentChip)) diag1 = false;
+            if (!GameField.data.get(GameField.getRealValue(i,GameField.N - i - 1)).equals(currentChip)) diag2 = false;
         }
-        diag1 = diag1 % (GameField.currentMovement ? intProgramChip : intUserChip);
-        diag2 = diag2 % (GameField.currentMovement ? intProgramChip : intUserChip);
-        if (diag1 == 0 || diag2 == 0){
+        if (diag1 || diag2){
             Game.game = false;
             Game.result = !GameField.currentMovement;
         }
