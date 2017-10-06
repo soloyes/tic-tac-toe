@@ -9,8 +9,9 @@ public class ProgramAI {
         return new Random();
     }
 
-    void aiBack() {
-
+    static int programMovement(int i) {
+        if (i == 0) return 4;
+        return randomBack().nextInt(GameField.N*GameField.M);
     }
 
     static void gameFieldAnalyse() {
@@ -20,7 +21,6 @@ public class ProgramAI {
             Game.game |= !Input.checkExist(i);
         }
 
-        //Here i check the sum of values of all positions.
         //Check raw and column
         char currentChip = GameField.currentMovement ? Election.programChip : Election.userChip;
 
@@ -41,8 +41,10 @@ public class ProgramAI {
         boolean diag1 = true;
         boolean diag2 = true;
         for (int i = 0; i < GameField.N; i++) {
-            if (!GameField.data.get(GameField.getRealValue(i, i)).equals(currentChip)) diag1 = false;
-            if (!GameField.data.get(GameField.getRealValue(i,GameField.N - i - 1)).equals(currentChip)) diag2 = false;
+            if (!GameField.data.get(GameField.getRealValue(i, i)).equals(currentChip))
+                diag1 = false;
+            if (!GameField.data.get(GameField.getRealValue(i,GameField.N - i - 1)).equals(currentChip))
+                diag2 = false;
         }
         if (diag1 || diag2){
             Game.game = false;

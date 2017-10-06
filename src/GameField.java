@@ -8,9 +8,10 @@ import java.util.List;
 
 public class GameField {
     static List<Character> data;
-    static int N = ProgramAI.randomBack().nextInt(2)+3;
+    static int N = ProgramAI.randomBack().nextInt(2) + 3;
     static int M = N;
     static Character fieldCharacter = '_';
+
     //null - this is the first step
     //false - this is program step
     //true - this is user step
@@ -18,7 +19,7 @@ public class GameField {
 
     static {
         data = new LinkedList<>();
-        for (int i = 0; i < N*M; i ++){   data.add(fieldCharacter);   }
+        for (int i = 0; i < N*M; i ++){ data.add(fieldCharacter); }
     }
 
     static void drawField() {
