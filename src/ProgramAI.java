@@ -1,9 +1,12 @@
 import java.util.*;
-
 /**
  * Created by sol
  * on 07.06.17 17:21.
+ * programMovement() - should be AI. If no AI and i = 0 => return 4, other case  return random.
+ * gameFieldAnalyse() - check raw and column and diagonale. Here will be check whether use AI or not.
+ * Now - just check the standard N*N field with N-win combination.
  */
+
 public class ProgramAI {
     static Random randomBack() {
         return new Random();

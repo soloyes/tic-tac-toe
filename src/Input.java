@@ -3,7 +3,12 @@ import java.io.InputStreamReader;
 /**
  * Created by sol
  * on 05.06.17 14:56.
+ * checkCoordinate() - check input coordinate's until well inputted.
+ * translate() - translate user's input to LinkedList position. Example: User input = 11 => 3*(0) + 1 -1 = 0.
+ * 0 - is the array[0] item.
+ * checkExist() - check whether field is empty from any chip.
  */
+
 public class Input {
 
     static Integer checkCoordinate(){
@@ -21,7 +26,9 @@ public class Input {
                         in/10 <= GameField.N &&
                         in % 10 > 0 &&
                         in % 10 <= GameField.N) break;
-            } catch (Exception e){}
+            } catch (Exception e){
+                //Nothing to do
+            }
         }
     return in;
     }
@@ -31,7 +38,6 @@ public class Input {
     }
 
     static Integer translate(Integer in){
-        //Input translate to Array index
         return GameField.N*(in/10 - 1) + in%10 - 1;
     }
 }

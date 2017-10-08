@@ -1,7 +1,10 @@
 /**
  * Created by sol
  * on 05.06.17 12:38.
+ * nextMovement() - if first step, check Election results. Other - check who is operate no by
+ * GameField.currentMovement
  */
+
 public class Movement {
 
     void nextMovement () {
