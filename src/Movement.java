@@ -8,7 +8,6 @@
 public class Movement {
 
     void nextMovement () {
-        //Nobody moved. So, check elections result
         if (GameField.currentMovement == null) {
                 if (Election.program) {
                 GameField.data.set(ProgramAI.programMovement(0), Election.programChip);
@@ -24,7 +23,7 @@ public class Movement {
             if (!GameField.currentMovement) {
                 for (;;) {
                     in = Input.translate(Input.checkCoordinate());
-                    if (!Input.checkExist(in)) {
+                    if (Input.isEmptyPosition(in)) {
                         GameField.data.set(in, Election.userChip);
                         break;
                     }
@@ -33,7 +32,7 @@ public class Movement {
             } else {
                 for (;;) {
                     in = ProgramAI.programMovement(1);
-                    if (!Input.checkExist(in)) {
+                    if (Input.isEmptyPosition(in)) {
                         GameField.data.set(in, Election.programChip);
                         break;
                     }
@@ -44,4 +43,3 @@ public class Movement {
         GameField.nextGamer();
     }
 }
-

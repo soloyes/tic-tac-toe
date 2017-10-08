@@ -5,8 +5,8 @@ import java.util.List;
  * on 05.06.17 11:45.
  * currentMovement:
  * null - this is the first step
- * false - this is program step
- * true - this is user step
+ * true - this is program step
+ * false - this is user step
  * getRealValue() - returns number of item in the ArrayList from 2-dimension coordinate.
  */
 

@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
  * checkCoordinate() - check input coordinate's until well inputted.
  * translate() - translate user's input to LinkedList position. Example: User input = 11 => 3*(0) + 1 -1 = 0.
  * 0 - is the array[0] item.
- * checkExist() - check whether field is empty from any chip.
+ * isEmptyPosition() - check whether field is empty from any chip.
  */
 
 public class Input {
@@ -33,8 +33,8 @@ public class Input {
     return in;
     }
 
-    static Boolean checkExist(Integer in){
-        return GameField.data.get(in) != GameField.fieldCharacter;
+    static Boolean isEmptyPosition(Integer in){
+        return GameField.data.get(in) == GameField.fieldCharacter;
     }
 
     static Integer translate(Integer in){

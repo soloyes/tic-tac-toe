@@ -14,14 +14,15 @@ public class ProgramAI {
 
     static int programMovement(int i) {
         if (i == 0) return 4;
-        return randomBack().nextInt(GameField.N*GameField.M);
+        else if (i == 1) return randomBack().nextInt(GameField.N*GameField.M);
+        else return 666; //Here going to be AI return
     }
 
     static void gameFieldAnalyse() {
         //Check valid movement
         Game.game = false;
         for (int i = 0; i < GameField.N*GameField.M; i ++){
-            Game.game |= !Input.checkExist(i);
+            Game.game |= Input.isEmptyPosition(i);
         }
 
         //Check raw and column
@@ -31,8 +32,8 @@ public class ProgramAI {
             boolean rawStatus = true;
             boolean columnStatus = true;
             for (int j = 0; j < GameField.N; j ++){
-                if (!GameField.data.get(GameField.getRealValue(i, j)).equals(currentChip)) rawStatus = false;
-                if (!GameField.data.get(GameField.getRealValue(j, i)).equals(currentChip)) columnStatus = false ;
+                if (!(GameField.data.get(GameField.getRealValue(i, j)) == currentChip)) rawStatus = false;
+                if (!(GameField.data.get(GameField.getRealValue(j, i)) == currentChip)) columnStatus = false ;
             }
             if (rawStatus || columnStatus){
                 Game.game = false;
@@ -44,9 +45,9 @@ public class ProgramAI {
         boolean diag1 = true;
         boolean diag2 = true;
         for (int i = 0; i < GameField.N; i++) {
-            if (!GameField.data.get(GameField.getRealValue(i, i)).equals(currentChip))
+            if (!(GameField.data.get(GameField.getRealValue(i, i)) == currentChip))
                 diag1 = false;
-            if (!GameField.data.get(GameField.getRealValue(i,GameField.N - i - 1)).equals(currentChip))
+            if (!(GameField.data.get(GameField.getRealValue(i,GameField.N - i - 1)) == currentChip))
                 diag2 = false;
         }
         if (diag1 || diag2){
