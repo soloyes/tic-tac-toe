@@ -30,7 +30,7 @@ public class Main {
                 Console.gameConsole();
                 break;
             case "2":
-                System.out.println("Starting GUI");
+                System.out.println("Starting GUI.");
                 GUI.gameGUI();
                 break;
             default:

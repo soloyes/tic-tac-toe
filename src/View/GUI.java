@@ -1,5 +1,10 @@
 package View;
 
+import Controller.Game;
+import Controller.Movement;
+import Model.Election;
+import Model.Players;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,9 +16,12 @@ import java.awt.event.ActionListener;
 
 public class GUI extends JFrame{
     private GUI(){
+        Game.gameRestart();
+
         setTitle("Tic-Tac-Toe");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(600,600);
+        setSize(300,300);
+        setLocationRelativeTo(null);
 
         JPanel bottomPanel = new JPanel();
         bottomPanel.setLayout(new GridLayout());
@@ -21,10 +29,16 @@ public class GUI extends JFrame{
         JButton reStart = new JButton("Restart");
         JButton end = new JButton("End");
 
+        GUIGameField guiGameField = new GUIGameField();
+        guiGameField.setLayout(new GridLayout());
+
         reStart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-
+                Game.gameRestart();
+                if (Election.currentPlayer().equals(Players.PROGRAM)) Movement.nextGUIMovement();
+                System.out.println("Restart game");
+                repaint();
             }
         });
 
@@ -40,6 +54,7 @@ public class GUI extends JFrame{
         bottomPanel.add(end);
 
         add(bottomPanel, BorderLayout.SOUTH);
+        add(guiGameField, BorderLayout.CENTER);
 
         setVisible(true);
     }

@@ -10,14 +10,13 @@ import static Main.Main.reader;
  * - checkCoordinate() - check input coordinate's until well inputted.
  * - translate() - translate user's input to LinkedList position. Example: User input = 11 => 3*(0) + 1 -1 = 0.
  * Therefore 0 - is the array[0] item.
- * - isEmptyPosition() - check whether field is empty from any chip.
  */
 
 class UserAI {
-    static Integer checkCoordinate(){
-        Integer in = -1;
-        try {
-            for (;;) {
+    private static Integer checkCoordinate(){
+        Integer in;
+        for (;;) {
+            try {
                 System.out.println("Movement example: raw and column (" +
                         (Game.random.nextInt(GameField.N) + 1) +
                         (Game.random.nextInt(GameField.N) + 1) +
@@ -28,13 +27,12 @@ class UserAI {
                         in / 10 <= GameField.N &&
                         in % 10 > 0 &&
                         in % 10 <= GameField.N) break;
-            }
+            } catch (NumberFormatException | IOException e) { }
         }
-        catch (NumberFormatException | IOException e) { e.getMessage(); e.printStackTrace(); }
         return in;
     }
 
-    static Integer translate(Integer in){
+    private static Integer translate(Integer in){
         return GameField.N*(in/10 - 1) + in%10 - 1;
     }
 

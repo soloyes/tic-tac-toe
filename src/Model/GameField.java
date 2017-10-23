@@ -9,24 +9,24 @@ import Controller.*;
  * Created by sol
  * on 05.06.17 11:45.
  * - getRealValue() - returns number of item in the ArrayList from 2-dimension coordinate.
- * - currentPlayer() - if current step is first, check Election results. Otherwise - check who is operate no by
- * value of currentMovement
  */
 
 public class GameField {
-    public static final int N = Game.random.nextInt(2) + 3;
-    public static final int M = N;
+    public static int N;
+    public static int M;
     private static final Character FIELD_CHARACTER = '_';
 
     private static List<Character> field;
 
-    static {
-        field = new LinkedList<>();
-        for (int i = 0; i < N*M; i ++){ field.add(FIELD_CHARACTER); }
-    }
-
     public static List<Character> getField() {
         return field;
+    }
+
+    public static void refreshField(){
+        N = Game.random.nextInt(2) + 3;
+        M = N;
+        field = new LinkedList<>();
+        for (int i = 0; i < N*M; i ++){ field.add(FIELD_CHARACTER); }
     }
 
     public static void drawField() {
