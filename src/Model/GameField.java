@@ -26,7 +26,9 @@ public class GameField {
         N = Game.random.nextInt(2) + 3;
         M = N;
         field = new LinkedList<>();
-        for (int i = 0; i < N*M; i ++){ field.add(FIELD_CHARACTER); }
+        for (int i = 0; i < N*M; i ++){
+            field.add(FIELD_CHARACTER);
+        }
     }
 
     public static void drawField() {

@@ -16,14 +16,18 @@ public class Election {
     public static final Character PLAYER_CHARACTER1 = 'X';
     public static final Character PLAYER_CHARACTER2 = 'O';
 
-    public static char getPlayerChip() { return playerChip; }
+    public static char getPlayerChip() {
+        return playerChip;
+    }
 
     public static char getProgramChip() {
         return programChip;
     }
 
     public static Players currentPlayer() {
-        if (program) return Players.PROGRAM;
+        if (program) {
+            return Players.PROGRAM;
+        }
         return Players.PLAYER;
     }
 

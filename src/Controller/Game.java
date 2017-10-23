@@ -29,7 +29,9 @@ public class Game {
         Game.result = result;
     }
 
-    public static Players getCurrentMovement() { return currentMovement; }
+    public static Players getCurrentMovement() {
+        return currentMovement;
+    }
 
     public static void nextPlayer(){
         currentMovement = (currentMovement.equals(Players.PLAYER)) ? Players.PROGRAM : Players.PLAYER;
@@ -45,8 +47,9 @@ public class Game {
 
     public static void isGameFieldFull(){
         Game.setGame(false);
-        for (int i = 0; i < GameField.getField().size(); i ++)
+        for (int i = 0; i < GameField.getField().size(); i ++) {
             Game.setGame(Game.isGame() | GameField.isEmptyPosition(i));
+        }
     }
 
     public static void gameFieldAnalyse(char x) {

@@ -36,7 +36,9 @@ public class GUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 Game.gameRestart();
-                if (Election.currentPlayer().equals(Players.PROGRAM)) Movement.nextGUIMovement();
+                if (Election.currentPlayer().equals(Players.PROGRAM)) {
+                    Movement.nextGUIMovement();
+                }
                 System.out.println("Restart game");
                 repaint();
             }

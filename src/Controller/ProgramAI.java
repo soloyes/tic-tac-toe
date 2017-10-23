@@ -13,8 +13,12 @@ import Model.*;
 public class ProgramAI {
 
     static Integer programMovement(int i) {
-        if (i == 0) return 4;
-        else if (i == 1) return Game.random.nextInt(GameField.N * GameField.M);
+        if (i == 0) {
+            return 4;
+        }
+        else if (i == 1) {
+            return Game.random.nextInt(GameField.N * GameField.M);
+        }
         else return 666; //Here going to be AI return. Do i later.
     }
 }

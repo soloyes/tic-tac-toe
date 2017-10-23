@@ -25,9 +25,15 @@ public class Console {
                     Game.nextPlayer();
                 }
 
-                if (Game.getResult() == null) System.out.println("Nobody win's");
-                else if (Game.getResult().equals(Players.PLAYER)) System.out.println(Players.PLAYER + " win's");
-                else if (Game.getResult().equals(Players.PROGRAM)) System.out.println(Players.PROGRAM + " win's");
+                if (Game.getResult() == null) {
+                    System.out.println("Nobody win's");
+                }
+                else if (Game.getResult().equals(Players.PLAYER)) {
+                    System.out.println(Players.PLAYER + " win's");
+                }
+                else if (Game.getResult().equals(Players.PROGRAM)) {
+                    System.out.println(Players.PROGRAM + " win's");
+                }
 
                 System.out.println("End game!");
                 System.out.println("\nPlay again?\n1 - Yes\nOther - No");
