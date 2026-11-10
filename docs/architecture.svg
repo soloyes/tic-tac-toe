@@ -1,20 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
   <title>Package structure</title>
   <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 z" fill="#7c8496"/>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="7" markerHeight="7" markerUnits="strokeWidth" orient="auto-start-reverse">
+      <path d="M1,1.5 L9,5 L1,8.5 Z" fill="#7c8496" stroke="#7c8496" stroke-width="1" stroke-linejoin="round"/>
     </marker>
-    <marker id="arrow-ev" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 z" fill="#9fb0ff"/>
+    <marker id="arrow-ev" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="7" markerHeight="7" markerUnits="strokeWidth" orient="auto-start-reverse">
+      <path d="M1,1.5 L9,5 L1,8.5 Z" fill="#9fb0ff" stroke="#9fb0ff" stroke-width="1" stroke-linejoin="round"/>
     </marker>
     <style>
       .box { fill: #1c1f28; stroke: #343a4c; stroke-width: 1.5; }
       .pkg { fill: #e7e9ef; font-size: 15px; font-weight: 700; }
       .cls { fill: #b4bac8; font-size: 12.5px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
       .role { fill: #8b91a1; font-size: 12.5px; }
-      .dep { stroke: #7c8496; stroke-width: 2; fill: none; marker-end: url(#arrow); }
-      .ev { stroke: #9fb0ff; stroke-width: 1.8; fill: none; stroke-dasharray: 6 5; marker-end: url(#arrow-ev); }
-      .evlbl { fill: #9fb0ff; font-size: 12px; }
+      .dep { stroke: #7c8496; stroke-width: 1.5; fill: none; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .ev { stroke: #9fb0ff; stroke-width: 1.5; fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 5 5; marker-end: url(#arrow-ev); }
+      .evlbl { fill: #9fb0ff; font-size: 12px; text-anchor: end; }
       .title { fill: #e7e9ef; font-size: 17px; font-weight: 700; }
       .sub { fill: #8b91a1; font-size: 13px; }
       .bar-entry { fill: #7c8cff; }
@@ -24,68 +24,53 @@
       .bar-model { fill: #c792ea; }
     </style>
   </defs>
-
-  <rect x="0" y="0" width="800" height="520" rx="16" fill="#12141a"/>
+  <rect id="bg" x="0" y="0" width="800" height="520" rx="16" fill="#12141a"/>
   <text class="title" x="28" y="38">io.github.soloyes.tictactoe</text>
-  <text class="sub" x="28" y="60">Solid arrows: "uses". Dashed: listener callbacks that repaint the window. No static or global game state.</text>
-
-  <!-- App -->
+  <text class="sub" x="28" y="60">Solid arrows mean "uses". The dashed arrow is the listener callback that repaints the window.</text>
   <rect class="box" x="300" y="80" width="200" height="62" rx="10"/>
-  <rect class="bar-entry" x="300" y="80" width="6" height="62" rx="3"/>
+  <rect class="bar-entry" x="300" y="90" width="4" height="42" rx="2"/>
   <text class="pkg" x="320" y="104">App</text>
   <text class="role" x="320" y="126">parses flags, picks a front end</text>
-
-  <!-- view.swing -->
   <rect class="box" x="60" y="178" width="290" height="92" rx="10"/>
-  <rect class="bar-view" x="60" y="178" width="6" height="92" rx="3"/>
+  <rect class="bar-view" x="60" y="188" width="4" height="72" rx="2"/>
   <text class="pkg" x="80" y="202">view.swing</text>
-  <text class="role" x="170" y="202">default</text>
-  <text class="cls" x="80" y="226">GameWindow · GamePanel · BoardPanel</text>
-  <text class="cls" x="80" y="246">StatusBar · SegmentedControl</text>
-  
-  <!-- view.console -->
+  <text class="role" x="182" y="202">default</text>
+  <text class="cls" x="80" y="224">GameWindow · GamePanel · BoardPanel</text>
+  <text class="cls" x="80" y="243">StatusBar · SegmentedControl</text>
   <rect class="box" x="450" y="178" width="290" height="92" rx="10"/>
-  <rect class="bar-view" x="450" y="178" width="6" height="92" rx="3"/>
+  <rect class="bar-view" x="450" y="188" width="4" height="72" rx="2"/>
   <text class="pkg" x="470" y="202">view.console</text>
-  <text class="role" x="578" y="202">--console</text>
-  <text class="cls" x="470" y="226">ConsoleGame</text>
-  <text class="role" x="470" y="248">reads "row col", prints the board</text>
-
-  <!-- controller -->
+  <text class="role" x="592" y="202">--console</text>
+  <text class="cls" x="470" y="224">ConsoleGame</text>
+  <text class="role" x="470" y="243">reads "row col", prints the board</text>
   <rect class="box" x="230" y="306" width="340" height="80" rx="10"/>
-  <rect class="bar-ctl" x="230" y="306" width="6" height="80" rx="3"/>
+  <rect class="bar-ctl" x="230" y="316" width="4" height="60" rx="2"/>
   <text class="pkg" x="250" y="330">controller</text>
-  <text class="role" x="340" y="330">turns, score, settings</text>
-  <text class="cls" x="250" y="354">GameController · GameSettings</text>
-  <text class="cls" x="250" y="373">GameListener · Score · FirstPlayer</text>
-
-  <!-- ai -->
+  <text class="role" x="348" y="330">turns, score, settings</text>
+  <text class="cls" x="250" y="352">GameController · GameSettings</text>
+  <text class="cls" x="250" y="371">GameListener · Score · FirstPlayer</text>
   <rect class="box" x="60" y="420" width="300" height="80" rx="10"/>
-  <rect class="bar-ai" x="60" y="420" width="6" height="80" rx="3"/>
+  <rect class="bar-ai" x="60" y="430" width="4" height="60" rx="2"/>
   <text class="pkg" x="80" y="444">ai</text>
-  <text class="role" x="104" y="444">minimax + alpha-beta</text>
-  <text class="cls" x="80" y="468">MoveStrategy · ComputerPlayer</text>
-  <text class="cls" x="80" y="487">Minimax · Heuristic · Difficulty</text>
-
-  <!-- model -->
+  <text class="role" x="110" y="444">minimax with alpha-beta</text>
+  <text class="cls" x="80" y="466">MoveStrategy · ComputerPlayer</text>
+  <text class="cls" x="80" y="485">Minimax · Heuristic · Difficulty</text>
   <rect class="box" x="440" y="420" width="300" height="80" rx="10"/>
-  <rect class="bar-model" x="440" y="420" width="6" height="80" rx="3"/>
+  <rect class="bar-model" x="440" y="430" width="4" height="60" rx="2"/>
   <text class="pkg" x="460" y="444">model</text>
-  <text class="role" x="514" y="444">pure game rules</text>
-  <text class="cls" x="460" y="468">Board · Mark · Line · Outcome</text>
-  <text class="role" x="460" y="488">no dependencies</text>
-
-  <!-- dependencies -->
-  <path class="dep" d="M360,142 L240,176"/>
-  <path class="dep" d="M440,142 L560,176"/>
-  <path class="dep" d="M400,142 C400,200 400,250 400,304"/>
-  <path class="dep" d="M240,270 L320,304"/>
-  <path class="dep" d="M560,270 L480,304"/>
-  <path class="dep" d="M330,386 L250,418"/>
-  <path class="dep" d="M470,386 L550,418"/>
-  <path class="dep" d="M360,460 L438,460"/>
-
-  <!-- listener events -->
-  <path class="ev" d="M230,346 C150,346 120,310 120,272"/>
-  <text class="evlbl" x="70" y="300">gameChanged()</text>
+  <text class="role" x="522" y="444">the game rules</text>
+  <text class="cls" x="460" y="466">Board · Mark · Line · Outcome</text>
+  <text class="role" x="460" y="485">depends on nothing</text>
+  <!-- uses -->
+  <path class="dep" d="M340,142 L340,152 Q340,160 332,160 L213,160 Q205,160 205,168 L205,178"/>
+  <path class="dep" d="M460,142 L460,152 Q460,160 468,160 L587,160 Q595,160 595,168 L595,178"/>
+  <path class="dep" d="M400,142 L400,306"/>
+  <path class="dep" d="M240,270 L240,280 Q240,288 248,288 L302,288 Q310,288 310,296 L310,306"/>
+  <path class="dep" d="M560,270 L560,280 Q560,288 552,288 L498,288 Q490,288 490,296 L490,306"/>
+  <path class="dep" d="M310,386 L310,395 Q310,403 302,403 L218,403 Q210,403 210,411 L210,420"/>
+  <path class="dep" d="M490,386 L490,395 Q490,403 498,403 L582,403 Q590,403 590,411 L590,420"/>
+  <path class="dep" d="M360,460 L440,460"/>
+  <!-- listener callback -->
+  <path class="ev" d="M230,346 L158,346 Q150,346 150,338 L150,270"/>
+  <text class="evlbl" x="140" y="312">gameChanged()</text>
 </svg>

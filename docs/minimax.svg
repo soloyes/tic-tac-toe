@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="470" viewBox="0 0 800 470" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="484" viewBox="0 0 800 484" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
   <title>Minimax with alpha-beta pruning</title>
   <defs>
     <style>
-      .edge { stroke: #5b6273; stroke-width: 2; fill: none; }
-      .pruned { stroke: #5b6273; stroke-width: 2; stroke-dasharray: 5 6; fill: none; opacity: .7; }
-      .max { fill: #16303b; stroke: #4cc9f0; stroke-width: 2.5; }
-      .min { fill: #3a2a17; stroke: #f7a859; stroke-width: 2.5; }
+      .edge { stroke: #6b7284; stroke-width: 1.5; fill: none; stroke-linecap: round; }
+      .pruned { stroke: #6b7284; stroke-width: 1.5; fill: none; stroke-linecap: round; stroke-dasharray: 4 5; opacity: .75; }
+      .max { fill: #16303b; stroke: #4cc9f0; stroke-width: 1.5; }
+      .min { fill: #3a2a17; stroke: #f7a859; stroke-width: 1.5; }
       .leaf { fill: #232733; stroke: #3a4050; stroke-width: 1.5; }
-      .leaf-dead { fill: none; stroke: #4a5060; stroke-width: 1.5; stroke-dasharray: 4 4; }
+      .leaf-dead { fill: none; stroke: #4a5060; stroke-width: 1.5; stroke-dasharray: 3 4; }
       .val { fill: #e7e9ef; font-size: 18px; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
       .leafval { fill: #c9cdd8; font-size: 15px; font-weight: 600; text-anchor: middle; dominant-baseline: central; }
       .deadval { fill: #6b7183; font-size: 15px; text-anchor: middle; dominant-baseline: central; }
@@ -15,75 +15,66 @@
       .lbl-r { fill: #8b91a1; font-size: 13px; text-anchor: end; }
       .title { fill: #e7e9ef; font-size: 17px; font-weight: 700; }
       .note { fill: #c9cdd8; font-size: 13px; }
-      .cut { stroke: #ff6b6b; stroke-width: 3; stroke-linecap: round; }
+      .cut { stroke: #ff6b6b; stroke-width: 2; stroke-linecap: round; fill: none; }
       .cutlbl { fill: #ff8a8a; font-size: 13px; font-weight: 600; text-anchor: middle; }
-      .ab { fill: #9fb0ff; font-size: 13px; font-weight: 600; }
+      .ab { fill: #9fb0ff; font-size: 13px; font-weight: 600; text-anchor: end; }
     </style>
   </defs>
-
-  <rect x="0" y="0" width="800" height="470" rx="16" fill="#12141a"/>
+  <rect id="bg" x="0" y="0" width="800" height="484" rx="16" fill="#12141a"/>
   <text class="title" x="28" y="38">Minimax with alpha-beta pruning</text>
   <text class="lbl" x="28" y="60">Values are from X's point of view. X picks the maximum, O picks the minimum.</text>
-
-  <!-- level labels -->
-  <text class="lbl-r" x="772" y="104">X to move · max</text>
-  <text class="lbl-r" x="772" y="224">O to move · min</text>
-  <text class="lbl-r" x="772" y="344">positions</text>
-
-  <g transform="translate(-40 0)">
-  <!-- edges root -> min nodes -->
-  <line class="edge" x1="400" y1="126" x2="170" y2="196"/>
-  <line class="edge" x1="400" y1="126" x2="400" y2="194"/>
-  <line class="edge" x1="400" y1="126" x2="630" y2="196"/>
-
-  <!-- edges A -->
-  <line class="edge" x1="170" y1="244" x2="100" y2="322"/>
-  <line class="edge" x1="170" y1="244" x2="170" y2="322"/>
-  <line class="edge" x1="170" y1="244" x2="240" y2="322"/>
-  <!-- edges B -->
-  <line class="edge" x1="400" y1="244" x2="330" y2="322"/>
-  <line class="pruned" x1="400" y1="244" x2="400" y2="322"/>
-  <line class="pruned" x1="400" y1="244" x2="470" y2="322"/>
-  <!-- edges C -->
-  <line class="edge" x1="630" y1="244" x2="560" y2="322"/>
-  <line class="edge" x1="630" y1="244" x2="630" y2="322"/>
-  <line class="edge" x1="630" y1="244" x2="700" y2="322"/>
-
-  <!-- root -->
-  <circle class="max" cx="400" cy="100" r="27"/>
-  <text class="val" x="400" y="100">3</text>
-  <text class="ab" x="438" y="92">best move: left</text>
-  <text class="ab" x="438" y="110">α = 3 after the first branch</text>
-
-  <!-- min nodes -->
-  <circle class="min" cx="170" cy="220" r="25"/>
-  <text class="val" x="170" y="220">3</text>
-  <circle class="min" cx="400" cy="220" r="25"/>
-  <text class="val" x="400" y="220">≤2</text>
-  <circle class="min" cx="630" cy="220" r="25"/>
-  <text class="val" x="630" y="220">2</text>
-
-  <!-- leaves A -->
-  <rect class="leaf" x="80" y="322" width="40" height="34" rx="8"/><text class="leafval" x="100" y="339">3</text>
-  <rect class="leaf" x="150" y="322" width="40" height="34" rx="8"/><text class="leafval" x="170" y="339">12</text>
-  <rect class="leaf" x="220" y="322" width="40" height="34" rx="8"/><text class="leafval" x="240" y="339">8</text>
-  <!-- leaves B -->
-  <rect class="leaf" x="310" y="322" width="40" height="34" rx="8"/><text class="leafval" x="330" y="339">2</text>
-  <rect class="leaf-dead" x="380" y="322" width="40" height="34" rx="8"/><text class="deadval" x="400" y="339">?</text>
-  <rect class="leaf-dead" x="450" y="322" width="40" height="34" rx="8"/><text class="deadval" x="470" y="339">?</text>
-  <!-- cut mark -->
-  <line class="cut" x1="386" y1="293" x2="452" y2="270"/>
-  <text class="cutlbl" x="400" y="382">pruned: O can already hold X to 2,</text>
-  <text class="cutlbl" x="400" y="400">and X has 3 elsewhere</text>
-  <!-- leaves C -->
-  <rect class="leaf" x="540" y="322" width="40" height="34" rx="8"/><text class="leafval" x="560" y="339">14</text>
-  <rect class="leaf" x="610" y="322" width="40" height="34" rx="8"/><text class="leafval" x="630" y="339">5</text>
-  <rect class="leaf" x="680" y="322" width="40" height="34" rx="8"/><text class="leafval" x="700" y="339">2</text>
-
-  </g>
-
-  <!-- footer notes -->
-  <line x1="28" y1="420" x2="772" y2="420" stroke="#2a2f3b" stroke-width="1"/>
-  <text class="note" x="28" y="444">Win = 1,000,000 − moves played, so faster wins score higher.  Draw = 0.  On 4×4 the search stops</text>
-  <text class="note" x="28" y="462">at a fixed depth and scores the position by its open lines (1 / 10 / 100 per mark in a line).</text>
+  <text class="lbl-r" x="772" y="116">X to move · max</text>
+  <text class="lbl-r" x="772" y="236">O to move · min</text>
+  <text class="lbl-r" x="772" y="349">positions</text>
+  <!-- edges -->
+  <path class="edge" d="M400,138 C400,173 190,173 190,208"/>
+  <path class="edge" d="M400,138 L400,208"/>
+  <path class="edge" d="M400,138 C400,173 610,173 610,208"/>
+  <path class="edge" d="M190,256 C190,292 120,292 120,328"/>
+  <path class="edge" d="M190,256 L190,328"/>
+  <path class="edge" d="M190,256 C190,292 260,292 260,328"/>
+  <path class="edge" d="M400,256 C400,292 330,292 330,328"/>
+  <path class="pruned" d="M400,256 L400,328"/>
+  <path class="pruned" d="M400,256 C400,292 470,292 470,328"/>
+  <path class="edge" d="M610,256 C610,292 540,292 540,328"/>
+  <path class="edge" d="M610,256 L610,328"/>
+  <path class="edge" d="M610,256 C610,292 680,292 680,328"/>
+  <!-- nodes -->
+  <circle class="max" cx="400" cy="112" r="26"/>
+  <text class="val" x="400" y="112">3</text>
+  <text class="ab" x="360" y="106">best move: left</text>
+  <text class="ab" x="360" y="124">α = 3 after the left branch</text>
+  <circle class="min" cx="190" cy="232" r="24"/>
+  <text class="val" x="190" y="232">3</text>
+  <circle class="min" cx="400" cy="232" r="24"/>
+  <text class="val" x="400" y="232">≤2</text>
+  <circle class="min" cx="610" cy="232" r="24"/>
+  <text class="val" x="610" y="232">2</text>
+  <!-- leaves -->
+  <rect class="leaf" x="100" y="328" width="40" height="34" rx="8"/>
+  <text class="leafval" x="120" y="345">3</text>
+  <rect class="leaf" x="170" y="328" width="40" height="34" rx="8"/>
+  <text class="leafval" x="190" y="345">12</text>
+  <rect class="leaf" x="240" y="328" width="40" height="34" rx="8"/>
+  <text class="leafval" x="260" y="345">8</text>
+  <rect class="leaf" x="310" y="328" width="40" height="34" rx="8"/>
+  <text class="leafval" x="330" y="345">2</text>
+  <rect class="leaf-dead" x="380" y="328" width="40" height="34" rx="8"/>
+  <text class="deadval" x="400" y="345">?</text>
+  <rect class="leaf-dead" x="450" y="328" width="40" height="34" rx="8"/>
+  <text class="deadval" x="470" y="345">?</text>
+  <rect class="leaf" x="520" y="328" width="40" height="34" rx="8"/>
+  <text class="leafval" x="540" y="345">14</text>
+  <rect class="leaf" x="590" y="328" width="40" height="34" rx="8"/>
+  <text class="leafval" x="610" y="345">5</text>
+  <rect class="leaf" x="660" y="328" width="40" height="34" rx="8"/>
+  <text class="leafval" x="680" y="345">2</text>
+  <!-- cut-off -->
+  <path class="cut" d="M393,299 L407,285"/>
+  <path class="cut" d="M428,299 L442,285"/>
+  <text class="cutlbl" x="400" y="388">cut off: O already holds X to 2 here,</text>
+  <text class="cutlbl" x="400" y="406">and X has 3 on the left</text>
+  <line x1="28" y1="428" x2="772" y2="428" stroke="#2a2f3b" stroke-width="1"/>
+  <text class="note" x="28" y="451">Win = 1,000,000 − moves played, so a faster win scores higher. Draw = 0. On 4×4 the search stops at a fixed depth</text>
+  <text class="note" x="28" y="469">and scores the position by its open lines: 1, 10 or 100 per line, depending on how many marks it already holds.</text>
 </svg>
